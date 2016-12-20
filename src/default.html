@@ -1,5 +1,6 @@
 <md-input-container class="schema-form-{{::form.type}} {{::form.htmlClass}}"
                     ng-class="{'md-input-has-value': model['{{form.key.join('\'][\'')}}'], 'has-error': hasError(), 'has-success': hasSuccess(), 'has-feedback': form.feedback !== false}"
+                    ng-init="dummy='dumb'"
                     sf-messages sf-layout>
   <label  ng-show="showTitle()" for="{{::form.key|sfCamelKey}}">{{::form.title}}</label>
   <input sf-field-model
@@ -15,4 +16,7 @@
          schema-validate="form"
          name="{{::form.key|sfCamelKey}}"
          aria-describedby="{{::form.key|sfCamelKey}}Status" />
+  <div ng-messages="dummy">
+    <div ng-show="ngModel.$invalid" ng-message="dumb" sf-message="form.description"></div>
+  </div>
 </md-input-container>

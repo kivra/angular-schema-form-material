@@ -73,10 +73,12 @@
     };
 
     function sfMessagesNodeHandler() {
-      var html = '<div ng-if="ngModel.$invalid" ng-messages="ngModel.$error"><div sf-message ng-message></div></div>';
-      var div = document.createElement('div');
-      div.innerHTML = html;
-      return div.firstChild;
+      // dummy variable because angular material only displays error messages properly
+      // if we use ng-messages structure
+      // var html = '<div ng-if="ngModel.$invalid" ng-messages="dummy"><div ng-message="dumb">hola hola</div></div>';
+      // var div = document.createElement('div');
+      // div.innerHTML = html;
+      // return div.firstChild;
     };
 
     function sfMessagesBuilder(args) {
