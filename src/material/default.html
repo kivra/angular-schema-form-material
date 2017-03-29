@@ -1,4 +1,4 @@
-<md-input-container class="schema-form-{{::form.type}} {{::form.htmlClass}}"
+<md-input-container class="schema-form-{{::form.type}} {{::form.htmlClass}} md-block"
                     ng-class="{'has-error': hasError(), 'has-success': hasSuccess(), 'has-feedback': form.feedback !== false}"
                     sf-messages sf-layout sf-material-class="md-input-has-value">
   <label  ng-show="showTitle()" for="{{::form.key|sfCamelKey}}">{{::form.title}}</label>
@@ -6,8 +6,9 @@
          ng-show="::form.key"
          type="{{::form.type}}"
          step="any"
+         md-no-autogrow="true"
+         md-no-resize="true"
          sf-changed="form"
-         placeholder="{{::form.placeholder}}"
          id="{{::form.key|sfCamelKey}}"
          ng-class="::form.fieldHtmlClass"
          sf-type-parser="form.schema"
