@@ -107,7 +107,7 @@ function materialDecoratorConfig(
   function sfMessagesBuilder(args) {
     var messagesDiv = args.fieldFrag.querySelector('[sf-messages]');
     if (messagesDiv && sfMessagesNode) {
-      var child = sfMessagesNode.cloneNode();
+      var child = sfMessagesNode.cloneNode(true);
       messagesDiv.appendChild(child);
     }
   };
