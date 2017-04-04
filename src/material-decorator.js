@@ -98,7 +98,7 @@ function materialDecoratorConfig(
   };
 
   function sfMessagesNodeHandler() {
-    var html = '<div ng-if="ngModel.$invalid" ng-messages="ngModel.$error"><div sf-message ng-message></div></div>';
+    var html = '<div ng-messages="ngModel.$error"><div sf-message ng-message></div></div>';
     var div = document.createElement('div');
     div.innerHTML = html;
     return div.firstChild;
