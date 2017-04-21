@@ -1,20 +1,31 @@
-<md-input-container class="schema-form-{{::form.type}} {{::form.htmlClass}} md-block"
-                    ng-class="{'has-error': hasError(), 'has-success': hasSuccess(), 'has-feedback': form.feedback !== false}"
-                    sf-messages sf-layout sf-material-class="md-input-has-value">
-  <label  ng-show="showTitle()" for="{{::form.key|sfCamelKey}}">{{::form.title}}</label>
-  <input sf-field-model
-         ng-show="::form.key"
-         type="{{::form.type}}"
-         step="any"
-         autocomplete="{{form.autocomplete}}"
-         md-no-autogrow="true"
-         md-no-resize="true"
-         sf-changed="form"
-         id="{{::form.key|sfCamelKey}}"
-         ng-class="::form.fieldHtmlClass"
-         sf-type-parser="form.schema"
-         ng-disabled="::form.readonly"
-         schema-validate="form"
-         name="{{::form.key|sfCamelKey}}"
-         aria-describedby="{{::form.key|sfCamelKey}}Status" />
-</md-input-container>
+<div ng-class="{
+               'mdc-textfield--invalid': hasError(),
+               'has-success': hasSuccess(),
+               'has-feedback': form.feedback !== false}">
+  <div class="mdc-textfield schema-form-{{::form.type}} {{::form.htmlClass}}"
+       ng-class="{
+                 'mdc-textfield--invalid': hasError()
+                 }">
+    <label class="mdc-textfield__label"
+           for="my-textfield">
+      {{ ::form.title }}
+    </label>
+    <input sf-field-model
+           id="{{::form.key|sfCamelKey}}"
+           type="text"
+           step="any"
+           schema-validate="form"
+           autocomplete="{{form.autocomplete}}"
+           sf-changed="form"
+           sf-type-parser="form.schema"
+           name="{{::form.key|sfCamelKey}}"
+           class="mdc-textfield__input">
+  </div>
+  <p class="mdc-textfield-helptext"
+     sf-message="form.description"
+     ng-class="{
+               'mdc-textfield-helptext--validation-msg': hasError(),
+               'mdc-textfield-helptext--persistent': hasError()
+               }">
+  </p>
+</div>

@@ -23,6 +23,8 @@ import tabsTemplate from './material/tabs.html';
 import tabarrayTemplate from './material/tabarray.html';
 import textareaTemplate from './material/textarea.html';
 
+import {MDCTextfield, MDCTextfieldFoundation} from '@material/textfield';
+
 angular
   .module('schemaForm')
   .config(materialDecoratorConfig)
@@ -56,14 +58,12 @@ function materialDecoratorConfig(
   var textarea           = textareaBuilder;
 
   var core = [ sfField, ngModel, ngModelOptions, condition, sfLayout ];
-  var defaults = core.concat(sfMessages);
+  var defaults = core.concat([sfMessages]);
   var arrays = core.concat(array);
 
   schemaFormProvider.defaults.string.unshift(dateDefault);
 
   decoratorsProvider.defineDecorator('materialDecorator', {
-    actions: { template: actionsTemplate, builder: [ sfField, simpleTransclusion, condition ] },
-    array: { template: arrayTemplate, builder: arrays },
     autocomplete: { template: autocompleteTemplate, builder: defaults.concat(mdAutocomplete) },
     boolean: { template: checkboxTemplate, builder: defaults },
     button: { template: submitTemplate, builder: defaults },
@@ -89,7 +89,11 @@ function materialDecoratorConfig(
 
   function sfLayout(args) {
     var layoutDiv = args.fieldFrag.querySelector('[sf-layout]');
-
+    // console.log(args.fieldFrag.querySelector);
+    const tf = args.fieldFrag.querySelector('.mdc-textfield');
+    if (tf) {
+      const textfield = new MDCTextfield(args.fieldFrag.querySelector('.mdc-textfield'));
+    }
     if (args.form.grid) {
       Object.getOwnPropertyNames(args.form.grid).forEach(function(property, idx, array) {
         layoutDiv.setAttribute(property, args.form.grid[property]);
@@ -98,7 +102,14 @@ function materialDecoratorConfig(
   };
 
   function sfMessagesNodeHandler() {
-    var html = '<div ng-messages="ngModel.$error"><div sf-message ng-message></div></div>';
+    var html = `<p class="mdc-textfield-helptext"
+     sf-message="form.description"
+     ng-class="{
+               'mdc-textfield-helptext--validation-msg': hasError(),
+               'mdc-textfield-helptext--persistent': hasError()
+               }"
+     >
+  </p>`
     var div = document.createElement('div');
     div.innerHTML = html;
     return div.firstChild;

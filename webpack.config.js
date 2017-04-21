@@ -67,6 +67,9 @@ module.exports = {
           }
         }, 'html-loader'],
         exclude: /(index)/
+      }, {
+        test: /\.css$/,
+        use: ['style-loader', 'css-loader']
       }
     ]
   },
