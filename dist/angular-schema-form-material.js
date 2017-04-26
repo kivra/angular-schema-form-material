@@ -1,7 +1,7 @@
 /*!
  * angular-schema-form-material
  * @version 1.0.0-alpha.2
- * @date Fri, 21 Apr 2017 13:11:55 GMT
+ * @date Wed, 26 Apr 2017 12:47:55 GMT
  * @link https://github.com/json-schema-form/angular-schema-form-material
  * @license MIT
  * Copyright (c) 2014-2017 JSON Schema Form
@@ -14,9 +14,9 @@
 /******/ 	function __webpack_require__(moduleId) {
 /******/
 /******/ 		// Check if module is in cache
-/******/ 		if(installedModules[moduleId])
+/******/ 		if(installedModules[moduleId]) {
 /******/ 			return installedModules[moduleId].exports;
-/******/
+/******/ 		}
 /******/ 		// Create a new module (and put it into the cache)
 /******/ 		var module = installedModules[moduleId] = {
 /******/ 			i: moduleId,
@@ -79,7 +79,7 @@
 /***/ (function(module, exports) {
 
 var path = '/material/default.html';
-var html = "<div ng-class=\"{\n               'mdc-textfield--invalid': hasError(),\n               'has-success': hasSuccess(),\n               'has-feedback': form.feedback !== false}\">\n  <div class=\"mdc-textfield schema-form-{{::form.type}} {{::form.htmlClass}}\"\n       ng-class=\"{\n                 'mdc-textfield--invalid': hasError()\n                 }\">\n    <label class=\"mdc-textfield__label\"\n           for=\"my-textfield\">\n      {{ ::form.title }}\n    </label>\n    <input sf-field-model\n           id=\"{{::form.key|sfCamelKey}}\"\n           type=\"text\"\n           step=\"any\"\n           schema-validate=\"form\"\n           autocomplete=\"{{form.autocomplete}}\"\n           sf-changed=\"form\"\n           sf-type-parser=\"form.schema\"\n           name=\"{{::form.key|sfCamelKey}}\"\n           class=\"mdc-textfield__input\">\n  </div>\n  <p class=\"mdc-textfield-helptext\"\n     sf-message=\"form.description\"\n     ng-class=\"{\n               'mdc-textfield-helptext--validation-msg': hasError(),\n               'mdc-textfield-helptext--persistent': hasError()\n               }\">\n  </p>\n</div>\n";
+var html = "<div ng-class=\"{\n               'mdc-textfield--invalid': hasError(),\n               'has-success': hasSuccess(),\n               'has-feedback': form.feedback !== false}\"\n     style=\"box-sizing: border-box; display: -webkit-box; display: -ms-flexbox; display: flex;\" \n     class=\"layout-column\">\n  <div class=\"mdc-textfield schema-form-{{::form.type}} {{::form.htmlClass}}\"\n       ng-class=\"{\n                 'mdc-textfield--invalid': hasError()\n                 }\">\n    <label class=\"mdc-textfield__label\"\n           for=\"my-textfield\">\n      {{ ::form.title }}\n    </label>\n    <input sf-field-model\n           id=\"{{::form.key|sfCamelKey}}\"\n           type=\"text\"\n           step=\"any\"\n           schema-validate=\"form\"\n           autocomplete=\"{{form.autocomplete}}\"\n           sf-changed=\"form\"\n           sf-type-parser=\"form.schema\"\n           name=\"{{::form.key|sfCamelKey}}\"\n           class=\"mdc-textfield__input\"\n           style=\"width: 100%;\">\n  </div>\n  <p class=\"mdc-textfield-helptext\"\n     sf-message=\"form.description\"\n     ng-class=\"{\n               'mdc-textfield-helptext--validation-msg': hasError(),\n               'mdc-textfield-helptext--persistent': hasError()\n               }\">\n  </p>\n</div>\n";
 window.angular.module('ng').run(['$templateCache', function(c) { c.put(path, html) }]);
 module.exports = path;
 

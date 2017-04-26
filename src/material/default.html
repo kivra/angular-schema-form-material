@@ -1,7 +1,9 @@
 <div ng-class="{
                'mdc-textfield--invalid': hasError(),
                'has-success': hasSuccess(),
-               'has-feedback': form.feedback !== false}">
+               'has-feedback': form.feedback !== false}"
+     style="box-sizing: border-box; display: -webkit-box; display: -ms-flexbox; display: flex;" 
+     class="layout-column">
   <div class="mdc-textfield schema-form-{{::form.type}} {{::form.htmlClass}}"
        ng-class="{
                  'mdc-textfield--invalid': hasError()
@@ -19,7 +21,8 @@
            sf-changed="form"
            sf-type-parser="form.schema"
            name="{{::form.key|sfCamelKey}}"
-           class="mdc-textfield__input">
+           class="mdc-textfield__input"
+           style="width: 100%;">
   </div>
   <p class="mdc-textfield-helptext"
      sf-message="form.description"

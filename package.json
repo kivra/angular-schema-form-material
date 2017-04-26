@@ -25,6 +25,7 @@
     "tv4": "~1.0.15"
   },
   "devDependencies": {
+    "@material/textfield": "^0.2.6",
     "babel": "^6.5.2",
     "babel-core": "^6.10.4",
     "babel-loader": "^6.2.4",
