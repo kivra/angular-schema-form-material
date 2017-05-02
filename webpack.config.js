@@ -56,7 +56,7 @@ module.exports = {
             ]
           }
         }],
-        exclude: /(node_modules|angular-schema-form)/
+        exclude: /(angular-schema-form)/
       },
       {
         test: /\.html$/,

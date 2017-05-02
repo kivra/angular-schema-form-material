@@ -8,10 +8,6 @@
        ng-class="{
                  'mdc-textfield--invalid': hasError()
                  }">
-    <label class="mdc-textfield__label"
-           for="my-textfield">
-      {{ ::form.title }}
-    </label>
     <input sf-field-model
            id="{{::form.key|sfCamelKey}}"
            type="text"
@@ -22,7 +18,12 @@
            sf-type-parser="form.schema"
            name="{{::form.key|sfCamelKey}}"
            class="mdc-textfield__input"
+           ng-required="form.required"
            style="width: 100%;">
+    <label class="mdc-textfield__label"
+           for="my-textfield">
+      {{ ::form.title }}
+    </label>
   </div>
   <p class="mdc-textfield-helptext"
      sf-message="form.description"
@@ -31,4 +32,5 @@
                'mdc-textfield-helptext--persistent': hasError()
                }">
   </p>
+  <pre>{{ hasError() | json }}</pre>
 </div>
