@@ -2,9 +2,8 @@
                'mdc-textfield--invalid': hasError(),
                'has-success': hasSuccess(),
                'has-feedback': form.feedback !== false}"
-     style="box-sizing: border-box; display: -webkit-box; display: -ms-flexbox; display: flex;" 
      class="layout-column">
-  <div class="mdc-textfield schema-form-{{::form.type}} {{::form.htmlClass}}"
+  <div class="asf-textfield mdc-textfield schema-form-{{::form.type}} {{::form.htmlClass}}"
        ng-class="{
                  'mdc-textfield--invalid': hasError()
                  }">
@@ -18,7 +17,6 @@
            sf-type-parser="form.schema"
            name="{{::form.key|sfCamelKey}}"
            class="mdc-textfield__input"
-           ng-required="form.required"
            style="width: 100%;">
     <label class="mdc-textfield__label"
            for="my-textfield">
@@ -32,5 +30,4 @@
                'mdc-textfield-helptext--persistent': hasError()
                }">
   </p>
-  <pre>{{ hasError() | json }}</pre>
 </div>
