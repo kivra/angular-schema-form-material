@@ -1,7 +1,7 @@
 /*!
  * angular-schema-form-material
  * @version 1.0.0-alpha.2
- * @date Wed, 29 Mar 2017 15:14:56 GMT
+ * @date Tue, 20 Jun 2017 14:30:27 GMT
  * @link https://github.com/json-schema-form/angular-schema-form-material
  * @license MIT
  * Copyright (c) 2014-2017 JSON Schema Form
@@ -14,9 +14,9 @@
 /******/ 	function __webpack_require__(moduleId) {
 /******/
 /******/ 		// Check if module is in cache
-/******/ 		if(installedModules[moduleId])
+/******/ 		if(installedModules[moduleId]) {
 /******/ 			return installedModules[moduleId].exports;
-/******/
+/******/ 		}
 /******/ 		// Create a new module (and put it into the cache)
 /******/ 		var module = installedModules[moduleId] = {
 /******/ 			i: moduleId,
@@ -71,7 +71,7 @@
 /******/ 	__webpack_require__.p = "";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 24);
+/******/ 	return __webpack_require__(__webpack_require__.s = 23);
 /******/ })
 /************************************************************************/
 /******/ ([
@@ -79,7 +79,7 @@
 /***/ (function(module, exports) {
 
 var path = '/material/default.html';
-var html = "<md-input-container class=\"schema-form-{{::form.type}} {{::form.htmlClass}} md-block\"\n                    ng-class=\"{'has-error': hasError(), 'has-success': hasSuccess(), 'has-feedback': form.feedback !== false}\"\n                    sf-messages sf-layout sf-material-class=\"md-input-has-value\">\n  <label  ng-show=\"showTitle()\" for=\"{{::form.key|sfCamelKey}}\">{{::form.title}}</label>\n  <input sf-field-model\n         ng-show=\"::form.key\"\n         type=\"{{::form.type}}\"\n         step=\"any\"\n         md-no-autogrow=\"true\"\n         md-no-resize=\"true\"\n         sf-changed=\"form\"\n         id=\"{{::form.key|sfCamelKey}}\"\n         ng-class=\"::form.fieldHtmlClass\"\n         sf-type-parser=\"form.schema\"\n         ng-disabled=\"::form.readonly\"\n         schema-validate=\"form\"\n         name=\"{{::form.key|sfCamelKey}}\"\n         aria-describedby=\"{{::form.key|sfCamelKey}}Status\" />\n</md-input-container>\n";
+var html = "<md-input-container class=\"schema-form-{{::form.type}} {{::form.htmlClass}} md-block\"\n                    ng-class=\"{'has-error': hasError(), 'has-success': hasSuccess(), 'has-feedback': form.feedback !== false}\"\n                    sf-messages sf-layout sf-material-class=\"md-input-has-value\">\n  <label  ng-show=\"showTitle()\" for=\"{{::form.key|sfCamelKey}}\">{{::form.title}}</label>\n  <input sf-field-model\n         ng-show=\"::form.key\"\n         type=\"{{::form.type}}\"\n         step=\"any\"\n         md-no-autogrow=\"true\"\n         md-no-resize=\"true\"\n         sf-changed=\"form\"\n         id=\"{{::form.key|sfCamelKey}}\"\n         ng-class=\"::form.fieldHtmlClass\"\n         ng-required=\"form.required\"\n         sf-type-parser=\"form.schema\"\n         ng-disabled=\"::form.readonly\"\n         schema-validate=\"form\"\n         name=\"{{::form.key|sfCamelKey}}\"\n         aria-describedby=\"{{::form.key|sfCamelKey}}Status\" />\n  <div ng-messages=\"ngModel.$error\">\n    <div sf-message ng-message>\n    </div>\n  </div>\n\n\n</md-input-container>\n";
 window.angular.module('ng').run(['$templateCache', function(c) { c.put(path, html) }]);
 module.exports = path;
 
@@ -97,7 +97,7 @@ module.exports = path;
 /***/ (function(module, exports) {
 
 var path = '/material/submit.html';
-var html = "<section class=\"schema-form-submit {{::form.htmlClass}}\" sf-messages>\n  <md-button class=\"md-raised {{ form.style || 'md-primary' }} {{::form.fieldHtmlClass}} md-block\" \n             type=\"{{::form.type}}\"\n             ng-disabled=\"form.readonly\"\n             aria-label=\"{{::form.title}}\">\n    <md-tooltip ng-if=\"::form.tip\">{{::form.tip}}</md-tooltip>\n    {{::form.title}}\n  </md-button>\n</section>\n";
+var html = "<section layout=\"row\"\n         layout-align=\"end\" \n         class=\"schema-form-submit {{::form.htmlClass}}\"\n         sf-messages>\n  <md-button class=\"md-raised {{ form.style || 'md-primary' }} {{::form.fieldHtmlClass}} md-block\" \n             type=\"{{::form.type}}\"\n             ng-disabled=\"form.readonly\"\n             aria-label=\"{{::form.title}}\">\n    <md-tooltip ng-if=\"::form.tip\">{{::form.tip}}</md-tooltip>\n    {{::form.title}}\n  </md-button>\n</section>\n";
 window.angular.module('ng').run(['$templateCache', function(c) { c.put(path, html) }]);
 module.exports = path;
 
@@ -434,7 +434,7 @@ function materialDecoratorConfig(
   };
 
   function sfMessagesNodeHandler() {
-    var html = '<div ng-if="ngModel.$invalid" ng-messages="ngModel.$error"><div sf-message ng-message></div></div>';
+    var html = '';
     var div = document.createElement('div');
     div.innerHTML = html;
     return div.firstChild;
@@ -442,6 +442,7 @@ function materialDecoratorConfig(
 
   function sfMessagesBuilder(args) {
     var messagesDiv = args.fieldFrag.querySelector('[sf-messages]');
+    console.log(sfMessagesNode);
     if (messagesDiv && sfMessagesNode) {
       var child = sfMessagesNode.cloneNode();
       messagesDiv.appendChild(child);
@@ -726,8 +727,7 @@ angular.module('schemaForm').directive('sfTypeParser', function() {
 
 
 /***/ }),
-/* 23 */,
-/* 24 */
+/* 23 */
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports = __webpack_require__(3);

@@ -11,9 +11,16 @@
          sf-changed="form"
          id="{{::form.key|sfCamelKey}}"
          ng-class="::form.fieldHtmlClass"
+         ng-required="form.required"
          sf-type-parser="form.schema"
          ng-disabled="::form.readonly"
          schema-validate="form"
          name="{{::form.key|sfCamelKey}}"
          aria-describedby="{{::form.key|sfCamelKey}}Status" />
+  <div ng-messages="ngModel.$error">
+    <div sf-message ng-message>
+    </div>
+  </div>
+
+
 </md-input-container>
